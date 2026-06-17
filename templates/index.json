@@ -7,7 +7,7 @@
           "type": "heading",
           "settings": {
             "heading": "Calm starts here.",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
         "text": {
@@ -47,7 +47,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "Most loved",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
@@ -106,7 +106,7 @@
       "block_order": ["calm", "walk", "treat", "groom"],
       "settings": {
         "title": "Shop by need",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "subtitle": "Find what matters most to your pet.",
         "color_scheme": "scheme-1",
         "padding_top": 96,
@@ -128,7 +128,7 @@
           "type": "heading",
           "settings": {
             "heading": "Started with one anxious rescue dog.",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text": {
@@ -149,6 +149,7 @@
       "block_order": ["caption", "heading", "text", "button"],
       "settings": {
         "image": "",
+        "_note_image": "NEEDS REAL IMAGE: Upload a warm brand photo in Theme Editor → Brand Story section",
         "height": "large",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -173,6 +174,7 @@
       "settings": {
         "eyebrow": "BUNDLE",
         "heading": "The Calm Starter Pack",
+        "_note_product": "NEEDS PRODUCT ASSIGNMENT: Assign the bundle product (e.g. 'calm-starter-pack') here, and set its compare_at_price in Shopify Admin to enable the Save badge.",
         "description": "<p>A curated set for calmer days — supplement, cozy throw, and a chew designed for slow, settled focus. Save 15% versus buying separately.</p>",
         "button_label": "Add bundle to cart",
         "color_scheme": "scheme-3",
