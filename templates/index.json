@@ -1,75 +1,276 @@
 {
   "sections": {
-    "image_banner": {
+    "hero": {
       "type": "image-banner",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "Calm starts here.",
             "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Boutique pet products for calmer, happier days.",
+            "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Shop now",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+      "block_order": ["heading", "text", "button"],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 30,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "bottom-left",
         "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
-    "featured_collection": {
+    "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
+        "title": "Most loved",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "link",
         "enable_desktop_slider": false,
         "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 80,
+        "padding_bottom": 60
+      }
+    },
+    "shop_by_need": {
+      "type": "collection-list",
+      "blocks": {
+        "calm": {
+          "type": "featured_collection",
+          "settings": {}
+        },
+        "walk": {
+          "type": "featured_collection",
+          "settings": {}
+        },
+        "treat": {
+          "type": "featured_collection",
+          "settings": {}
+        },
+        "groom": {
+          "type": "featured_collection",
+          "settings": {}
+        }
+      },
+      "block_order": ["calm", "walk", "treat", "groom"],
+      "settings": {
+        "title": "Shop by need",
+        "heading_size": "h1",
+        "image_ratio": "landscape",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "OUR STORY",
+            "caption_size": "small",
+            "caption_style": "uppercase"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Started with one anxious rescue dog.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We couldn't find products that felt as gentle as the home we wanted to give her. So we started making our own — small batches, considered ingredients, designed for the calmer days every pet deserves.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read our full story",
+            "button_link": "",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": ["caption", "heading", "text", "button"],
+      "settings": {
+        "image": "",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-5",
+        "mobile_content_alignment": "left",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "bundle": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "The Calm Starter Pack",
+        "heading_size": "h1",
+        "description": "<p>A curated set for calmer days — supplement, cozy bed throw, and a chew designed for slow, settled focus. Saves 15% versus buying separately.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-3",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "testimonials": {
+      "type": "multicolumn",
+      "blocks": {
+        "t1": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "First Customer",
+            "text": "<p><em>“PLACEHOLDER: Replace with a real review.”</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "t2": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "Second Customer",
+            "text": "<p><em>“PLACEHOLDER: Replace with a real review.”</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "t3": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "title": "Third Customer",
+            "text": "<p><em>“PLACEHOLDER: Replace with a real review.”</em></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "title": "From the pack",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-5",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the pack.",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>New arrivals, tips, and the occasional treat — straight to your inbox.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "best_sellers",
+    "shop_by_need",
+    "story",
+    "bundle",
+    "testimonials",
+    "newsletter"
   ]
 }
