@@ -1,0 +1,82 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding fh-trust-strip">
+  <div class="page-width">
+    <ul class="fh-trust-strip__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="fh-trust-strip__item" {{ block.shopify_attributes }}>
+          <span class="fh-trust-strip__icon" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'truck' -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+              {%- when 'globe' -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+              {%- when 'return' -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.34-5.66"/><path d="M4 4v4h4"/></svg>
+              {%- when 'shield-check' -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.4-8 9-4.6-.6-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+              {%- else -%}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/></svg>
+            {%- endcase -%}
+          </span>
+          <span class="fh-trust-strip__label">{{ block.settings.label | escape }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FH Trust Strip",
+  "tag": "section",
+  "class": "section fh-section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck" },
+            { "value": "globe", "label": "Globe" },
+            { "value": "return", "label": "Return" },
+            { "value": "shield-check", "label": "Shield (verified)" }
+          ],
+          "default": "truck"
+        },
+        { "type": "text", "id": "label", "label": "Label", "default": "Free shipping over $75" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FH Trust Strip",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "label": "Free shipping over $75" } },
+        { "type": "item", "settings": { "icon": "globe", "label": "Australian made" } },
+        { "type": "item", "settings": { "icon": "return", "label": "30-day returns" } },
+        { "type": "item", "settings": { "icon": "shield-check", "label": "Vet-approved ingredients" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

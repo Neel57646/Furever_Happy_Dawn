@@ -9,16 +9,23 @@
   }
 {%- endstyle -%}
 
-<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
-  <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div class="collection-hero fh-collection-banner{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image fh-collection-banner--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="collection-hero__inner page-width scroll-trigger animate--fade-up">
     <div class="collection-hero__text-wrapper">
-      <h1 class="collection-hero__title">
+      <nav class="fh-collection-banner__crumbs" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ routes.collections_url }}">Collections</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ collection.title | escape }}</span>
+      </nav>
+      <h1 class="collection-hero__title fh-collection-banner__title">
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
         {{- collection.title | escape -}}
       </h1>
 
-      {%- if section.settings.show_collection_description -%}
-        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- if section.settings.show_collection_description and collection.description != blank -%}
+        <div class="collection-hero__description fh-collection-banner__description rte">{{ collection.description }}</div>
       {%- endif -%}
     </div>
 

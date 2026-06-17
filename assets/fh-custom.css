@@ -497,3 +497,422 @@
 .fh-newsletter .newsletter-form__button:hover {
   filter: brightness(0.95);
 }
+
+/* ==========================================================================
+   COLLECTION PAGE — banner + filters + product grid + pagination
+   ========================================================================== */
+.fh-collection-banner {
+  position: relative;
+  min-height: 30vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0 3rem;
+  overflow: hidden;
+}
+
+.fh-collection-banner__crumbs {
+  font-family: var(--font-body-family);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.fh-collection-banner__crumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.fh-collection-banner__crumbs a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fh-collection-banner__title {
+  font-family: var(--font-heading-family);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.fh-collection-banner__description {
+  margin-top: 1rem;
+  max-width: 600px;
+  font-family: var(--font-body-family);
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* Filters — vertical sidebar */
+.facets-vertical {
+  border-right: 1px solid rgba(var(--color-foreground), 0.08);
+  padding-right: 2rem;
+}
+
+.facets__heading,
+.mobile-facets__heading {
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.005em;
+}
+
+.facets__header,
+.facets__header-vertical {
+  font-family: var(--font-body-family);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+  margin-bottom: 1rem;
+}
+
+.facets__disclosure .facets__summary,
+.facets__summary {
+  font-family: var(--font-body-family);
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.06);
+}
+
+.facets__label {
+  font-family: var(--font-body-family);
+  font-size: 0.88rem;
+}
+
+.facets__price .field__input {
+  border-radius: 4px;
+  font-family: var(--font-body-family);
+}
+
+.active-facets__button,
+.active-facets__button-inner {
+  border-radius: 999px;
+  font-family: var(--font-body-family);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+/* Sort dropdown */
+.facet-filters__sort,
+.facet-filters select {
+  font-family: var(--font-body-family);
+  border-radius: 4px;
+}
+
+/* Mobile filter drawer */
+.mobile-facets__wrapper { background: rgb(var(--color-background)); }
+.mobile-facets__inner   { background: rgb(var(--color-background)); }
+
+/* Pagination */
+.pagination-wrapper { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(var(--color-foreground), 0.08); }
+
+.pagination__list {
+  font-family: var(--font-body-family);
+  gap: 0.25rem;
+}
+
+.pagination__item {
+  border-radius: 4px;
+}
+
+.pagination__item-current,
+.pagination__item--current {
+  background: rgb(var(--color-button));
+  color: rgb(var(--color-button-text, var(--color-button-label)));
+}
+
+/* ==========================================================================
+   PRODUCT PAGE
+   ========================================================================== */
+.product__title,
+.product__title h1 {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.product__text.price,
+.product .price {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+}
+
+.price--on-sale .price-item--regular {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.price--on-sale .price-item--sale {
+  color: rgb(var(--color-foreground));
+  font-weight: 600;
+}
+
+.product-form__submit {
+  padding: 1.1rem 2.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-family: var(--font-body-family);
+  transition: filter 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-form__submit:hover:not([disabled]) {
+  filter: brightness(0.92);
+  transform: translateY(-1px);
+}
+
+.quantity__button { border-radius: 4px; }
+.quantity__input  { font-family: var(--font-body-family); }
+
+.product__media-list .product__media-item img,
+.product__media-wrapper img {
+  border-radius: 4px;
+}
+
+.thumbnail-list .thumbnail {
+  border-radius: 4px;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.thumbnail-list .thumbnail.is-active,
+.thumbnail-list .thumbnail:hover {
+  border-color: rgb(var(--color-foreground));
+}
+
+/* Variant pills */
+.product-form__input--pill input[type="radio"]:checked + label {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  border-color: rgb(var(--color-foreground));
+}
+
+/* Collapsible product info accordions */
+.product__accordion .accordion__title,
+.product__accordion summary {
+  font-family: var(--font-body-family);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.08);
+}
+
+.product__accordion .accordion__content,
+.product__accordion .rte {
+  font-family: var(--font-body-family);
+  line-height: 1.7;
+  padding: 1rem 0 1.5rem;
+}
+
+/* ==========================================================================
+   FH TRUST STRIP
+   ========================================================================== */
+.fh-trust-strip__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .fh-trust-strip__list { grid-template-columns: repeat(4, 1fr); }
+}
+
+.fh-trust-strip__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body-family);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.fh-trust-strip__icon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  color: rgb(var(--color-foreground));
+}
+
+.fh-trust-strip__label { opacity: 0.9; }
+
+/* Related products: "You might also like" heading */
+.fh-related-products .related-products__heading {
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.005em;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   ABOUT + RICH-TEXT polish (used by page.about + page.contact banner)
+   ========================================================================== */
+.template-page .rich-text__blocks,
+.rich-text__blocks {
+  max-width: 680px;
+}
+
+.template-page .rich-text__text p,
+.rich-text__text p {
+  font-family: var(--font-body-family);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.25em;
+}
+
+.template-page .rich-text__heading,
+.rich-text__heading {
+  font-family: var(--font-heading-family);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.rich-text__caption {
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   CONTACT PAGE FORM
+   ========================================================================== */
+.contact .field__input,
+.contact .field textarea,
+.contact textarea,
+.contact input[type="text"],
+.contact input[type="email"],
+.contact input[type="tel"] {
+  border-radius: 4px;
+  font-family: var(--font-body-family);
+  border-color: rgba(var(--color-foreground), 0.18);
+  transition: border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact .field__input:focus,
+.contact .field textarea:focus,
+.contact textarea:focus {
+  border-color: rgb(var(--color-button));
+}
+
+.contact .button {
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.contact-form { max-width: 640px; }
+
+/* ==========================================================================
+   POLICY PAGES
+   ========================================================================== */
+.template-policy main,
+.template-policy .page-width,
+.policy-page .rte {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-body-family);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.template-policy h1 {
+  font-family: var(--font-heading-family);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.template-policy h2,
+.policy-page h2 {
+  font-family: var(--font-heading-family);
+  font-size: 1.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   FOOTER (scheme-4 charcoal)
+   ========================================================================== */
+.footer {
+  border-top: none;
+}
+
+.footer__content-top { border-top: none; }
+
+.footer-block__heading {
+  font-family: var(--font-heading-family);
+  font-size: 1rem;
+  letter-spacing: 0.005em;
+  margin-bottom: 1.25rem;
+}
+
+.footer-block__details-content a,
+.footer-block__details-content li,
+.footer-block__details-content p,
+.footer-block__details-content,
+.footer-block-image {
+  font-family: var(--font-body-family);
+  font-size: 0.9rem;
+}
+
+.footer-block__details-content a {
+  opacity: 0.8;
+  transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-block__details-content a:hover { opacity: 1; }
+
+.copyright,
+.footer__copyright,
+.footer__content-bottom-wrapper--center small,
+.footer__content-bottom small {
+  font-family: var(--font-body-family);
+  font-size: 0.78rem;
+  opacity: 0.55;
+}
+
+.copyright a { opacity: 0.75; }
+
+.footer .list-social__item .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   HEADER POLISH
+   ========================================================================== */
+.header__heading-link,
+.header__heading-logo-wrapper {
+  font-family: var(--font-heading-family);
+}
+
+.header__inline-menu .header__menu-item,
+.header__menu-item,
+.header__active-menu-item {
+  font-family: var(--font-body-family);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.header__active-menu-item { color: rgb(var(--color-button)); }
+
+.header.shopify-section-header-sticky,
+.shopify-section-header-sticky .header {
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.06);
+}

@@ -1,0 +1,141 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our story",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": ["heading"],
+      "settings": {
+        "image_height": "medium",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "left",
+        "image_overlay_opacity": 0,
+        "_needs_image": "Upload a calm brand portrait via Theme Editor → About hero"
+      }
+    },
+    "story_origin": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "HOW IT STARTED",
+            "caption_size": "small",
+            "caption_style": "uppercase"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "It started with one anxious rescue dog and a lot of trial and error.",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We spent months trying every supplement, every calming aid, every trick we could find. Most of them didn't work. Some of them weren't even safe. We started Furever Happy because we wanted a place where every product was something we'd actually give to our own dog — tested, trusted, and honestly described.</p><p>We're based in Australia, and we believe pet care should be simple, transparent, and kind. No gimmicks, no pseudoscience, no overpackaged nonsense. Just good products for good pets.</p>"
+          }
+        }
+      },
+      "block_order": ["caption", "heading", "text"],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 96,
+        "padding_bottom": 48
+      }
+    },
+    "values": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "WHAT WE BELIEVE",
+            "caption_size": "small",
+            "caption_style": "uppercase"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Honest ingredients. Real results. No fluff.",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every product is Australian-made or sourced from trusted suppliers we've vetted ourselves. We read every label, test with our own pets, and only stock what works. If something doesn't meet our standard, it doesn't make the shelf.</p>"
+          }
+        }
+      },
+      "block_order": ["caption", "heading", "text"],
+      "settings": {
+        "image": "",
+        "_needs_image": "Upload a values/lifestyle photo",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "mobile_content_alignment": "left",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ready to find what works?",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Browse our collection of carefully chosen pet products.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop the range",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": ["hero", "story_origin", "values", "cta"]
+}
