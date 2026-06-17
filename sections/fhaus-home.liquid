@@ -1,0 +1,124 @@
+<section class="fh-home" style="--bg: {{ section.settings.bg }}; --ink: {{ section.settings.ink }}; --green: {{ section.settings.green }}; --sage: {{ section.settings.sage }}; --gold: {{ section.settings.gold }};">
+  <div class="fh-strip">{{ section.settings.shipping_text }}</div>
+
+  <div class="fh-hero">
+    <div class="fh-copy">
+      <p class="fh-kicker">{{ section.settings.kicker }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.subheading }}</p>
+      <div class="fh-actions">
+        <a class="fh-btn fh-btn--main" href="{{ section.settings.primary_link }}">{{ section.settings.primary_label }}</a>
+        <a class="fh-btn fh-btn--ghost" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+      </div>
+    </div>
+
+    <div class="fh-visual">
+      <span class="fh-shape fh-shape--one"></span>
+      <span class="fh-shape fh-shape--two"></span>
+      {% if section.settings.hero_image != blank %}
+        {{ section.settings.hero_image | image_url: width: 900 | image_tag: class: 'fh-hero-img', loading: 'eager', sizes: '(min-width: 990px) 44vw, 92vw' }}
+      {% else %}
+        <div class="fh-mat" aria-hidden="true"><span></span><span></span><span></span></div>
+      {% endif %}
+      <svg class="fh-line" viewBox="0 0 220 190" aria-hidden="true">
+        <path d="M42 118c9-38 34-62 72-62 39 0 64 30 64 70 0 21-9 40-26 54" />
+        <path d="M92 76c13-29 37-43 70-42 31 1 50 20 55 50" />
+        <path d="M178 80c20 4 27 18 20 38-6 18-20 30-42 38" />
+        <path d="M72 134c21 16 43 17 65 4" />
+        <path d="M106 106c5 5 10 5 15 0" />
+        <path d="M160 101c4 4 8 4 13 0" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="fh-benefits">
+    {% for block in section.blocks %}
+      {% if block.type == 'benefit' %}
+        <div class="fh-benefit" {{ block.shopify_attributes }}>
+          <span>{{ block.settings.symbol }}</span>
+          <strong>{{ block.settings.text }}</strong>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="fh-products">
+    <p class="fh-kicker">{{ section.settings.products_kicker }}</p>
+    <h2>{{ section.settings.products_heading }}</h2>
+    <div class="fh-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'product_card' %}
+          {% assign product = block.settings.product %}
+          <article class="fh-card" {{ block.shopify_attributes }}>
+            <a class="fh-card-img" href="{% if product != blank %}{{ product.url }}{% else %}{{ block.settings.link }}{% endif %}">
+              {% if product != blank and product.featured_image != blank %}
+                {{ product.featured_image | image_url: width: 560 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 30vw, 90vw' }}
+              {% elsif block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 560 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 30vw, 90vw' }}
+              {% else %}
+                <span class="fh-placeholder"></span>
+              {% endif %}
+            </a>
+            <div class="fh-dots"><span></span><span></span><span></span></div>
+            <h3>{% if product != blank %}{{ product.title }}{% else %}{{ block.settings.title }}{% endif %}</h3>
+            <p>{% if product != blank %}{{ product.price | money }}{% else %}{{ block.settings.note }}{% endif %}</p>
+            <a class="fh-shop" href="{% if product != blank %}{{ product.url }}{% else %}{{ block.settings.link }}{% endif %}">{{ block.settings.button_label }} -></a>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.fh-home{background:radial-gradient(circle at 8% 0,#fffaf1,transparent 30%),linear-gradient(180deg,var(--bg),#fffdf8 72%,#f5efe4);color:var(--ink);overflow:hidden;padding:0 20px 56px}.fh-strip{background:linear-gradient(90deg,var(--green),#718967);border-radius:0 0 28px 28px;color:#fff;font-weight:800;margin:0 auto;max-width:1120px;min-height:54px;padding:15px 18px;text-align:center}.fh-hero{align-items:center;display:grid;gap:42px;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);margin:auto;max-width:1120px;min-height:620px;padding:72px 0 44px}.fh-kicker{color:var(--gold);font-size:14px;font-weight:900;letter-spacing:0;margin:0 0 14px;text-transform:uppercase}.fh-copy h1,.fh-products h2{color:var(--green);font-family:Georgia,'Times New Roman',serif;font-size:clamp(44px,6vw,82px);line-height:.95;margin:0}.fh-copy p{font-size:20px;line-height:1.65;margin:26px 0 0;max-width:570px}.fh-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}.fh-btn,.fh-shop{align-items:center;border-radius:8px;display:inline-flex;font-weight:900;justify-content:center;min-height:54px;padding:0 24px;text-decoration:none}.fh-btn--main{background:var(--green);box-shadow:0 18px 34px #1c402b33;color:#fff}.fh-btn--ghost{border:2px solid var(--green);color:var(--green)}.fh-visual{aspect-ratio:1;display:grid;min-height:420px;place-items:center;position:relative}.fh-shape{border-radius:44% 56% 54% 46%;position:absolute}.fh-shape--one{background:#e9dcc4;height:70%;right:4%;top:2%;width:70%}.fh-shape--two{background:var(--sage);bottom:5%;height:58%;left:0;width:86%}.fh-hero-img{max-height:84%;max-width:88%;object-fit:contain;position:relative;z-index:2}.fh-mat{background:#9eae8e;border:4px solid #6d8060;border-radius:26px;box-shadow:inset 0 0 0 10px #ffffff1f,0 28px 58px #273b2a38;display:grid;gap:18px;grid-template-columns:1fr 1fr 1fr;height:250px;padding:34px;position:relative;transform:rotate(-7deg);width:360px;z-index:2}.fh-mat span{background:repeating-linear-gradient(180deg,transparent 0 12px,#334a3366 13px 17px);border-radius:14px}.fh-line{bottom:4%;fill:none;position:absolute;right:-2%;stroke:var(--green);stroke-linecap:round;stroke-linejoin:round;stroke-width:6;width:min(44%,240px);z-index:3}.fh-benefits{background:#ffffffd9;border:1px solid #25392814;border-radius:8px;box-shadow:0 24px 55px #2f3d2b1f;display:grid;grid-template-columns:repeat(4,1fr);margin:-18px auto 64px;max-width:1040px;overflow:hidden}.fh-benefit{display:grid;font-size:15px;gap:12px;justify-items:center;min-height:130px;padding:24px 14px;text-align:center}.fh-benefit span{background:#f2e5cf;border-radius:50%;color:var(--green);display:grid;font-size:26px;font-weight:900;height:54px;place-items:center;width:54px}.fh-products{margin:auto;max-width:1120px;text-align:center}.fh-products h2{font-size:clamp(32px,4vw,54px);margin:0 auto 34px}.fh-grid{display:grid;gap:22px;grid-template-columns:repeat(3,1fr)}.fh-card{background:#ffffffe6;border:1px solid #25392814;border-radius:8px;box-shadow:0 18px 42px #2f3d2b1a;display:flex;flex-direction:column;min-height:420px;padding:18px}.fh-card-img{align-items:center;aspect-ratio:1.08;background:linear-gradient(180deg,#fffaf0,#f0eadf);border-radius:8px;display:flex;justify-content:center;overflow:hidden}.fh-card-img img{height:100%;object-fit:contain;padding:12px;width:100%}.fh-placeholder{background:repeating-radial-gradient(circle at center,transparent 0 14px,#394f56 15px 18px),#a8b397;border:4px solid #778667;border-radius:28px;height:74%;width:78%}.fh-dots{display:flex;gap:10px;justify-content:center;margin:18px 0 10px}.fh-dots span{border-radius:50%;height:18px;width:18px}.fh-dots span:nth-child(1){background:#9eae8e}.fh-dots span:nth-child(2){background:#d9c292}.fh-dots span:nth-child(3){background:#b9b8ac}.fh-card h3{color:#102a1b;font-size:20px;line-height:1.2;margin:0}.fh-card p{color:#596356;font-weight:700;margin:8px 0 18px}.fh-shop{background:#f3e8d7;color:var(--green);margin-top:auto;min-height:48px}@media(max-width:900px){.fh-home{padding:0 14px 42px}.fh-hero{grid-template-columns:1fr;min-height:0;padding:44px 0 30px}.fh-benefits{grid-template-columns:repeat(2,1fr);margin-bottom:48px}.fh-grid{grid-template-columns:1fr}}@media(max-width:520px){.fh-strip{border-radius:0 0 18px 18px;font-size:13px}.fh-actions{display:grid}.fh-benefits{grid-template-columns:1fr}.fh-mat{height:190px;width:275px}}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "FHAUS homepage",
+  "settings": [
+    { "type": "text", "id": "shipping_text", "label": "Shipping message", "default": "Free shipping over $49 Australia-wide" },
+    { "type": "text", "id": "kicker", "label": "Small heading", "default": "Australian pet comfort" },
+    { "type": "text", "id": "heading", "label": "Main heading", "default": "Calmer Meals. Happier Pets." },
+    { "type": "textarea", "id": "subheading", "label": "Intro text", "default": "Premium slow feeders and enrichment mats designed to support calmer eating, easy cleaning, and healthier daily routines." },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Shop Best Sellers" },
+    { "type": "url", "id": "primary_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Find My Pet's Size" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary button link" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero product image" },
+    { "type": "text", "id": "products_kicker", "label": "Products small heading", "default": "Best sellers" },
+    { "type": "text", "id": "products_heading", "label": "Products heading", "default": "Designed for Happier Feeding" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#fbf7ed" },
+    { "type": "color", "id": "ink", "label": "Text", "default": "#17251b" },
+    { "type": "color", "id": "green", "label": "Primary green", "default": "#173d28" },
+    { "type": "color", "id": "sage", "label": "Soft sage", "default": "#a8b397" },
+    { "type": "color", "id": "gold", "label": "Warm accent", "default": "#c49359" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "symbol", "label": "Symbol", "default": "+" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Food-grade silicone" }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "limit": 3,
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "image_picker", "id": "image", "label": "Fallback image" },
+        { "type": "text", "id": "title", "label": "Fallback title", "default": "Calm feeding mat" },
+        { "type": "text", "id": "note", "label": "Fallback note", "default": "Choose your pet's match" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Now" },
+        { "type": "url", "id": "link", "label": "Fallback link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "FHAUS homepage" }]
+}
+{% endschema %}
