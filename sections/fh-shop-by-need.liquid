@@ -1,0 +1,125 @@
+{{ 'section-fh-shop-by-need.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="fh-needs__title scroll-trigger animate--fade-up {{ section.settings.heading_size }}">
+        {{ section.settings.title | escape }}
+      </h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="fh-needs__subtitle scroll-trigger animate--fade-up">
+        {{ section.settings.subtitle | escape }}
+      </p>
+    {%- endif -%}
+
+    <div class="fh-needs-grid">
+      {%- for block in section.blocks -%}
+        {%- assign idx = forloop.index0 -%}
+        {%- assign is_large = false -%}
+        {%- comment -%} Alternating large/small per row: positions 0,3 large; 1,2 small {%- endcomment -%}
+        {%- if idx == 0 or idx == 3 -%}{%- assign is_large = true -%}{%- endif -%}
+
+        <a
+          class="fh-tile fh-tile--{% if is_large %}large{% else %}small{% endif %} scroll-trigger animate--fh-scale-in color-{{ block.settings.color_scheme }} gradient"
+          href="{% if block.settings.collection != blank %}{{ block.settings.collection.url }}{% else %}#{% endif %}"
+          style="--animation-order: {{ idx }};"
+          {{ block.shopify_attributes }}
+        >
+          <span class="fh-tile__media fh-parallax">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 1200 | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 900, 1200, 1600',
+                  sizes: '(min-width: 750px) 50vw, 100vw',
+                  alt: block.settings.title | default: 'Shop by need tile'
+              }}
+            {%- elsif block.settings.collection.image != blank -%}
+              {{ block.settings.collection.image | image_url: width: 1200 | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 900, 1200, 1600',
+                  sizes: '(min-width: 750px) 50vw, 100vw',
+                  alt: block.settings.title | default: block.settings.collection.title
+              }}
+            {%- elsif block.settings.collection.featured_image != blank -%}
+              {{ block.settings.collection.featured_image | image_url: width: 1200 | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 900, 1200, 1600',
+                  sizes: '(min-width: 750px) 50vw, 100vw',
+                  alt: block.settings.title | default: block.settings.collection.title
+              }}
+            {%- else -%}
+              <span class="fh-tile__placeholder" aria-hidden="true"></span>
+            {%- endif -%}
+          </span>
+          <span class="fh-tile__overlay" aria-hidden="true"></span>
+          <span class="fh-tile__content">
+            <span class="fh-tile__title">{{ block.settings.title | default: 'Category' | escape }}</span>
+            <span class="fh-tile__arrow" aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FH Shop by Need",
+  "tag": "section",
+  "class": "section fh-section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Shop by need" },
+    {
+      "type": "select", "id": "heading_size", "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Find what matters most to your pet." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Section color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Category tile",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tile title", "default": "Category" },
+        { "type": "collection", "id": "collection", "label": "Linked collection" },
+        { "type": "image_picker", "id": "image", "label": "Background image (optional, falls back to collection image)" },
+        { "type": "color_scheme", "id": "color_scheme", "label": "Fallback color scheme", "default": "scheme-2" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FH Shop by Need",
+      "blocks": [
+        { "type": "tile", "settings": { "title": "Calm & Comfort", "color_scheme": "scheme-2" } },
+        { "type": "tile", "settings": { "title": "Walk & Play", "color_scheme": "scheme-3" } },
+        { "type": "tile", "settings": { "title": "Treat & Nourish", "color_scheme": "scheme-5" } },
+        { "type": "tile", "settings": { "title": "Groom & Care", "color_scheme": "scheme-2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

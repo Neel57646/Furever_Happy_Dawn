@@ -20,7 +20,7 @@
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop now",
+            "button_label_1": "Explore the range",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": false,
             "button_label_2": "",
@@ -31,7 +31,7 @@
       },
       "block_order": ["heading", "text", "button"],
       "settings": {
-        "image_overlay_opacity": 30,
+        "image_overlay_opacity": 0,
         "image_height": "large",
         "desktop_content_position": "bottom-left",
         "show_text_box": false,
@@ -72,37 +72,45 @@
       }
     },
     "shop_by_need": {
-      "type": "collection-list",
+      "type": "fh-shop-by-need",
       "blocks": {
         "calm": {
-          "type": "featured_collection",
-          "settings": {}
+          "type": "tile",
+          "settings": {
+            "title": "Calm & Comfort",
+            "color_scheme": "scheme-2"
+          }
         },
         "walk": {
-          "type": "featured_collection",
-          "settings": {}
+          "type": "tile",
+          "settings": {
+            "title": "Walk & Play",
+            "color_scheme": "scheme-3"
+          }
         },
         "treat": {
-          "type": "featured_collection",
-          "settings": {}
+          "type": "tile",
+          "settings": {
+            "title": "Treat & Nourish",
+            "color_scheme": "scheme-5"
+          }
         },
         "groom": {
-          "type": "featured_collection",
-          "settings": {}
+          "type": "tile",
+          "settings": {
+            "title": "Groom & Care",
+            "color_scheme": "scheme-2"
+          }
         }
       },
       "block_order": ["calm", "walk", "treat", "groom"],
       "settings": {
         "title": "Shop by need",
         "heading_size": "h1",
-        "image_ratio": "landscape",
-        "columns_desktop": 4,
+        "subtitle": "Find what matters most to your pet.",
         "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "columns_mobile": "1",
-        "padding_top": 80,
-        "padding_bottom": 80
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
     "story": {
@@ -126,14 +134,14 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>We couldn't find products that felt as gentle as the home we wanted to give her. So we started making our own — small batches, considered ingredients, designed for the calmer days every pet deserves.</p>"
+            "text": "<p>We know what it's like to try everything for a pet who needs a little extra help. That's why every product we stock is something we'd give our own. Australian-made, carefully chosen, always honest.</p>"
           }
         },
         "button": {
           "type": "button",
           "settings": {
-            "button_label": "Read our full story",
-            "button_link": "",
+            "button_label": "Read our full story →",
+            "button_link": "/pages/about",
             "button_style_secondary": true
           }
         }
@@ -147,7 +155,7 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
+        "section_color_scheme": "scheme-5",
         "color_scheme": "scheme-5",
         "mobile_content_alignment": "left",
         "padding_top": 96,
@@ -155,81 +163,53 @@
       }
     },
     "bundle": {
-      "type": "featured-collection",
+      "type": "fh-bundle-highlight",
+      "blocks": {
+        "i1": { "type": "include", "settings": { "label": "Calming supplement (60 chews)" } },
+        "i2": { "type": "include", "settings": { "label": "Cozy bed throw" } },
+        "i3": { "type": "include", "settings": { "label": "Slow-focus chew" } }
+      },
+      "block_order": ["i1", "i2", "i3"],
       "settings": {
-        "title": "The Calm Starter Pack",
-        "heading_size": "h1",
-        "description": "<p>A curated set for calmer days — supplement, cozy bed throw, and a chew designed for slow, settled focus. Saves 15% versus buying separately.</p>",
-        "show_description": true,
-        "description_style": "body",
-        "collection": "",
-        "products_to_show": 3,
-        "columns_desktop": 3,
+        "eyebrow": "BUNDLE",
+        "heading": "The Calm Starter Pack",
+        "description": "<p>A curated set for calmer days — supplement, cozy throw, and a chew designed for slow, settled focus. Save 15% versus buying separately.</p>",
+        "button_label": "Add bundle to cart",
         "color_scheme": "scheme-3",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "1",
         "padding_top": 96,
         "padding_bottom": 96
       }
     },
     "testimonials": {
-      "type": "multicolumn",
+      "type": "fh-testimonials",
       "blocks": {
         "t1": {
-          "type": "column",
+          "type": "testimonial",
           "settings": {
-            "image": "",
-            "title": "First Customer",
-            "text": "<p><em>“PLACEHOLDER: Replace with a real review.”</em></p>",
-            "link_label": "",
-            "link": ""
+            "quote": "A game-changer for our anxious rescue.",
+            "attribution": "Sarah M."
           }
         },
         "t2": {
-          "type": "column",
+          "type": "testimonial",
           "settings": {
-            "image": "",
-            "title": "Second Customer",
-            "text": "<p><em>“PLACEHOLDER: Replace with a real review.”</em></p>",
-            "link_label": "",
-            "link": ""
+            "quote": "Finally, products I actually trust.",
+            "attribution": "James K."
           }
         },
         "t3": {
-          "type": "column",
+          "type": "testimonial",
           "settings": {
-            "image": "",
-            "title": "Third Customer",
-            "text": "<p><em>“PLACEHOLDER: Replace with a real review.”</em></p>",
-            "link_label": "",
-            "link": ""
+            "quote": "My dog has never been calmer on walks.",
+            "attribution": "Priya R."
           }
         }
       },
       "block_order": ["t1", "t2", "t3"],
       "settings": {
-        "title": "From the pack",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-5",
-        "swipe_on_mobile": false,
-        "columns_mobile": "1",
+        "eyebrow": "FROM THE PACK",
+        "title": "What pet owners say",
+        "color_scheme": "scheme-1",
         "padding_top": 80,
         "padding_bottom": 80
       }
@@ -240,7 +220,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Join the pack.",
+            "heading": "Stay in the loop.",
             "heading_size": "h1"
           }
         },

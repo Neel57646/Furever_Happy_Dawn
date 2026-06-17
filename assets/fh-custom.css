@@ -1,0 +1,500 @@
+/* ==========================================================================
+   Furever Happy — Custom section styles
+   All colors reference Dawn's CSS custom properties tied to schemes 1-5.
+   ========================================================================== */
+
+/* ---------- Shared eyebrow ---------- */
+.fh-eyebrow {
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0 0 1.25rem;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   HERO — image-banner overrides
+   ========================================================================== */
+.banner.banner--large,
+.banner.banner--medium,
+.banner.banner--small {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.banner::after {
+  background: linear-gradient(
+    to top,
+    rgba(58, 53, 49, 0.55) 0%,
+    rgba(58, 53, 49, 0.15) 45%,
+    transparent 75%
+  );
+  opacity: 1 !important;
+}
+
+/* Lower-left text placement on desktop */
+@media screen and (min-width: 750px) {
+  .banner__content--bottom-left .banner__box,
+  .banner__content--middle-left .banner__box {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 4vw;
+    margin-bottom: 6vh;
+    max-width: 560px;
+  }
+}
+
+.fh-banner__box {
+  padding: 1.5rem 0;
+}
+
+.banner__heading {
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.banner__text p {
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  line-height: 1.55;
+  opacity: 0.95;
+}
+
+/* Premium boutique button */
+.banner .button--primary,
+.fh-banner__box .button--primary {
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  transition: filter 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.banner .button--primary:hover,
+.fh-banner__box .button--primary:hover {
+  filter: brightness(0.92);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   BEST SELLERS — featured-collection card hover
+   ========================================================================== */
+.card--product .card__media .media img,
+.card-wrapper .card .card__media img {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card--product:hover .card__media .media img,
+.card-wrapper:hover .card .card__media img {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   FH SHOP BY NEED — asymmetric tile grid
+   ========================================================================== */
+.fh-needs__title {
+  font-family: var(--font-heading-family);
+  margin: 0 0 0.5rem;
+}
+
+.fh-needs__subtitle {
+  font-family: var(--font-body-family);
+  opacity: 0.7;
+  margin: 0 0 2.5rem;
+  max-width: 36rem;
+}
+
+.fh-needs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .fh-needs-grid {
+    grid-template-columns: 58fr 42fr;
+    gap: 1.5rem;
+  }
+  /* Reverse the second row: small on left, large on right */
+  .fh-needs-grid > .fh-tile:nth-child(3) {
+    grid-column: 1 / span 1;
+  }
+  .fh-needs-grid > .fh-tile:nth-child(3).fh-tile--small {
+    grid-column: 1 / span 1;
+  }
+  /* Layout pattern: large, small, small, large */
+  .fh-needs-grid > .fh-tile:nth-child(1) { grid-column: 1 / 2; }
+  .fh-needs-grid > .fh-tile:nth-child(2) { grid-column: 2 / 3; }
+  .fh-needs-grid > .fh-tile:nth-child(3) { grid-column: 1 / 2; }
+  .fh-needs-grid > .fh-tile:nth-child(4) { grid-column: 2 / 3; }
+}
+
+.fh-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  text-decoration: none;
+  color: rgb(var(--color-background));
+  aspect-ratio: 1 / 1;
+  background: rgb(var(--color-background));
+}
+
+@media screen and (min-width: 750px) {
+  .fh-tile--large { aspect-ratio: 16 / 10; }
+  .fh-tile--small { aspect-ratio: 1 / 1; }
+}
+
+.fh-tile__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.fh-tile__media img,
+.fh-tile__placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fh-tile__placeholder {
+  background: linear-gradient(135deg,
+    rgba(var(--color-foreground), 0.08),
+    rgba(var(--color-foreground), 0.02));
+}
+
+.fh-tile__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(58, 53, 49, 0.55) 0%,
+    rgba(58, 53, 49, 0.15) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fh-tile__content {
+  position: absolute;
+  z-index: 2;
+  left: 1.75rem;
+  right: 1.75rem;
+  bottom: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  color: #FAF6F1;
+}
+
+.fh-tile__title {
+  font-family: var(--font-heading-family);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+
+.fh-tile__arrow {
+  font-size: 1.2rem;
+  opacity: 0.85;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fh-tile:hover .fh-tile__media img {
+  transform: scale(1.04);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fh-tile:hover .fh-tile__content {
+  transform: translateY(-4px);
+}
+
+.fh-tile:hover .fh-tile__arrow {
+  transform: translateX(4px);
+}
+
+.fh-tile:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   FH BRAND STORY — image-with-text overrides on .fh-story
+   ========================================================================== */
+.fh-story .image-with-text__media-item {
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .fh-story .image-with-text__content {
+    padding: 4rem 3rem;
+  }
+}
+
+.fh-story .image-with-text__heading {
+  font-family: var(--font-heading-family);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.fh-story .image-with-text__text--caption {
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}
+
+/* Tertiary text link (not a button) styling for the story CTA */
+.fh-story .button--secondary {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: rgb(var(--color-button));
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.fh-story .button--secondary::after,
+.fh-story .button--secondary::before {
+  display: none;
+}
+
+.fh-story .button--secondary:hover {
+  filter: brightness(0.9);
+}
+
+/* ==========================================================================
+   FH BUNDLE HIGHLIGHT
+   ========================================================================== */
+.fh-bundle-section { overflow: hidden; }
+
+.fh-bundle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media screen and (min-width: 750px) {
+  .fh-bundle {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.fh-bundle__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.fh-bundle__media img,
+.fh-bundle__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fh-bundle__placeholder {
+  background: linear-gradient(135deg,
+    rgba(var(--color-foreground), 0.08),
+    rgba(var(--color-foreground), 0.02));
+}
+
+.fh-bundle__content { padding: 0.5rem 0; }
+
+.fh-bundle__heading {
+  font-family: var(--font-heading-family);
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+
+.fh-bundle__description {
+  font-family: var(--font-body-family);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.fh-bundle__includes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  font-family: var(--font-body-family);
+}
+
+.fh-bundle__includes li {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.fh-bundle__includes-dash {
+  opacity: 0.5;
+}
+
+.fh-bundle__price {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.fh-price-compare {
+  opacity: 0.5;
+  text-decoration: line-through;
+  font-size: 1rem;
+}
+
+.fh-price-current {
+  font-family: var(--font-heading-family);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.fh-price-save {
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 3px;
+  background: rgba(139, 168, 136, 0.18); /* sage tint, scheme-neutral */
+  color: rgb(var(--color-foreground));
+}
+
+.fh-bundle__form { margin: 0; }
+
+.fh-bundle__button {
+  padding: 1rem 2.25rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   FH TESTIMONIALS
+   ========================================================================== */
+.fh-tm__eyebrow { margin-bottom: 0.75rem; }
+
+.fh-tm__title {
+  font-family: var(--font-heading-family);
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0 0 2.5rem;
+}
+
+.fh-tm-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .fh-tm-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.fh-tm-card {
+  margin: 0;
+  padding: 2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.12);
+  border-radius: 4px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fh-tm-card__quote {
+  font-family: var(--font-heading-family);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  position: relative;
+}
+
+.fh-tm-card__mark {
+  font-family: var(--font-heading-family);
+  font-style: normal;
+  font-size: 2.5rem;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.15em;
+  opacity: 0.45;
+}
+
+.fh-tm-card__attribution {
+  font-family: var(--font-body-family);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   NEWSLETTER tweaks (.fh-newsletter)
+   ========================================================================== */
+.fh-newsletter .newsletter__wrapper {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.fh-newsletter h2 {
+  font-family: var(--font-heading-family);
+  letter-spacing: -0.005em;
+}
+
+.fh-newsletter .newsletter__subheading {
+  opacity: 0.85;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fh-newsletter .newsletter-form__field-wrapper {
+  max-width: 500px;
+  margin: 1.5rem auto 0;
+}
+
+.fh-newsletter .field__input {
+  border-radius: 4px;
+}
+
+.fh-newsletter .newsletter-form__button {
+  border-radius: 4px;
+  transition: filter 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fh-newsletter .newsletter-form__button:hover {
+  filter: brightness(0.95);
+}

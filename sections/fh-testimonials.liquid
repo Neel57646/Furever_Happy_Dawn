@@ -1,0 +1,76 @@
+{{ 'section-fh-testimonials.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding fh-tm-section">
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="fh-eyebrow fh-tm__eyebrow scroll-trigger animate--fade-up">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 class="fh-tm__title scroll-trigger animate--fade-up">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    <div class="fh-tm-grid fh-stagger scroll-trigger">
+      {%- for block in section.blocks -%}
+        <!-- PLACEHOLDER: Replace with real customer review -->
+        <figure class="fh-tm-card fh-stagger-item" style="--animation-order: {{ forloop.index0 }};" {{ block.shopify_attributes }}>
+          <blockquote class="fh-tm-card__quote">
+            <span class="fh-tm-card__mark" aria-hidden="true">&ldquo;</span>
+            {{ block.settings.quote | escape }}
+          </blockquote>
+          <figcaption class="fh-tm-card__attribution">
+            {{ block.settings.attribution | escape }}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FH Testimonials",
+  "tag": "section",
+  "class": "section fh-section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FROM THE PACK" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "What pet owners say" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Section color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote (PLACEHOLDER until real review)", "default": "A game-changer for our anxious rescue." },
+        { "type": "text", "id": "attribution", "label": "Attribution (first name + initial)", "default": "Sarah M." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FH Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "quote": "A game-changer for our anxious rescue.", "attribution": "Sarah M." } },
+        { "type": "testimonial", "settings": { "quote": "Finally, products I actually trust.", "attribution": "James K." } },
+        { "type": "testimonial", "settings": { "quote": "My dog has never been calmer on walks.", "attribution": "Priya R." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

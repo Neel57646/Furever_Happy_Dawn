@@ -1,0 +1,141 @@
+{{ 'section-fh-bundle-highlight.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign product = section.settings.product
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding fh-bundle-section">
+  <div class="page-width">
+    <div class="fh-bundle scroll-trigger animate--fh-scale-in">
+      <div class="fh-bundle__media fh-parallax">
+        {%- if product != blank and product.featured_image != blank -%}
+          {{ product.featured_image | image_url: width: 1200 | image_tag:
+              loading: 'lazy',
+              widths: '400, 600, 900, 1200',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              alt: product.title
+          }}
+        {%- elsif section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+              loading: 'lazy',
+              widths: '400, 600, 900, 1200',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              alt: section.settings.heading
+          }}
+        {%- else -%}
+          <span class="fh-bundle__placeholder" aria-hidden="true"></span>
+        {%- endif -%}
+      </div>
+
+      <div class="fh-bundle__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="fh-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+
+        <h2 class="fh-bundle__heading">
+          {%- if product != blank -%}{{ product.title }}{%- else -%}{{ section.settings.heading | escape }}{%- endif -%}
+        </h2>
+
+        {%- if section.settings.description != blank -%}
+          <div class="fh-bundle__description rte">{{ section.settings.description }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="fh-bundle__includes">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'include' -%}
+                <li {{ block.shopify_attributes }}>
+                  <span class="fh-bundle__includes-dash" aria-hidden="true">&mdash;</span>
+                  {{ block.settings.label | escape }}
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="fh-bundle__price">
+          {%- if product != blank -%}
+            {%- if product.compare_at_price > product.price -%}
+              <s class="fh-price-compare">{{ product.compare_at_price | money }}</s>
+              <span class="fh-price-current">{{ product.price | money }}</span>
+              <span class="fh-price-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+            {%- else -%}
+              <span class="fh-price-current">{{ product.price | money }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        <div class="fh-bundle__cta">
+          {%- if product != blank -%}
+            {%- form 'product', product, class: 'fh-bundle__form' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <button type="submit" class="button button--primary fh-bundle__button"{% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}>
+                {%- if product.selected_or_first_available_variant.available -%}
+                  {{ section.settings.button_label | default: 'Add bundle to cart' | escape }}
+                {%- else -%}
+                  Sold out
+                {%- endif -%}
+              </button>
+            {%- endform -%}
+          {%- else -%}
+            <a class="button button--primary fh-bundle__button" href="{{ section.settings.button_link | default: '#' }}">
+              {{ section.settings.button_label | default: 'Add bundle to cart' | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FH Bundle Highlight",
+  "tag": "section",
+  "class": "section fh-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "BUNDLE" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Calm Starter Pack" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>A curated set for calmer days. Save versus buying separately.</p>" },
+    { "type": "product", "id": "product", "label": "Bundle product" },
+    { "type": "image_picker", "id": "image", "label": "Fallback image" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Add bundle to cart" },
+    { "type": "url", "id": "button_link", "label": "Button link (used only if no product selected)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Section color scheme", "default": "scheme-3" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "include",
+      "name": "Included item",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Item label", "default": "Calming supplement (60 chews)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FH Bundle Highlight",
+      "blocks": [
+        { "type": "include", "settings": { "label": "Calming supplement (60 chews)" } },
+        { "type": "include", "settings": { "label": "Cozy bed throw" } },
+        { "type": "include", "settings": { "label": "Slow-focus chew" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
