@@ -3595,3 +3595,72 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+/* ==========================================================================
+   Furever Happy — Brand Animation Utilities
+   Extends Dawn's existing .scroll-trigger system rather than replacing it.
+   These classes rely on the same JS IntersectionObserver that toggles
+   .scroll-trigger--offscreen, so no JS changes are required.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .scroll-trigger.animate--fade-up {
+    opacity: 0.01;
+    transform: translateY(4rem);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-trigger:not(.scroll-trigger--offscreen).animate--fade-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fh-stagger-item {
+    opacity: 0.01;
+    transform: translateY(3rem);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--animation-order, 0) * 100ms);
+  }
+
+  .fh-stagger:not(.scroll-trigger--offscreen) .fh-stagger-item,
+  .fh-stagger-item:not(.scroll-trigger--offscreen) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fh-parallax {
+    overflow: hidden;
+  }
+
+  .fh-parallax > img,
+  .fh-parallax > .svg-wrapper,
+  .fh-parallax > video {
+    transform: translateY(var(--fh-parallax-y, 0)) scale(1.08);
+    transition: transform 0.2s linear;
+    will-change: transform;
+  }
+
+  .scroll-trigger.animate--fh-scale-in {
+    opacity: 0.01;
+    transform: scale(0.94);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scroll-trigger:not(.scroll-trigger--offscreen).animate--fh-scale-in {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-trigger.animate--fade-up,
+  .fh-stagger-item,
+  .scroll-trigger.animate--fh-scale-in {
+    opacity: 1;
+    transform: none;
+  }
+}
