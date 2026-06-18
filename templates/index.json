@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -29,38 +38,40 @@
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "image_overlay_opacity": 0,
         "image_height": "large",
-        "desktop_content_position": "bottom-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-1",
         "image_behavior": "ambient",
-        "mobile_content_alignment": "left",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
         "show_text_below": false
       }
     },
     "best_sellers": {
       "type": "featured-collection",
       "settings": {
+        "collection": "best-sellers",
+        "products_to_show": 4,
         "title": "Most loved",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "_note_collection": "PREFERRED: assign a 'best-sellers' or 'frontpage' collection in Theme Editor. Falls back to 'all' below.",
-        "collection": "all",
-        "products_to_show": 4,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "link",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -68,6 +79,7 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 80,
         "padding_bottom": 60
       }
@@ -79,6 +91,7 @@
           "type": "tile",
           "settings": {
             "title": "Calm & Comfort",
+            "collection": "calm-comfort",
             "color_scheme": "scheme-2"
           }
         },
@@ -86,6 +99,7 @@
           "type": "tile",
           "settings": {
             "title": "Walk & Play",
+            "collection": "walk-play",
             "color_scheme": "scheme-3"
           }
         },
@@ -93,6 +107,7 @@
           "type": "tile",
           "settings": {
             "title": "Treat & Nourish",
+            "collection": "treat-nourish",
             "color_scheme": "scheme-5"
           }
         },
@@ -100,11 +115,17 @@
           "type": "tile",
           "settings": {
             "title": "Groom & Care",
+            "collection": "groom-care",
             "color_scheme": "scheme-2"
           }
         }
       },
-      "block_order": ["calm", "walk", "treat", "groom"],
+      "block_order": [
+        "calm",
+        "walk",
+        "treat",
+        "groom"
+      ],
       "settings": {
         "title": "Shop by need",
         "heading_size": "h2",
@@ -121,8 +142,8 @@
           "type": "caption",
           "settings": {
             "caption": "OUR STORY",
-            "caption_size": "small",
-            "caption_style": "uppercase"
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
           }
         },
         "heading": {
@@ -135,7 +156,8 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>We know what it's like to try everything for a pet who needs a little extra help. That's why every product we stock is something we'd give our own. Australian-made, carefully chosen, always honest.</p>"
+            "text": "<p>We know what it's like to try everything for a pet who needs a little extra help. That's why every product we stock is something we'd give our own. Australian-made, carefully chosen, always honest.</p>",
+            "text_style": "body"
           }
         },
         "button": {
@@ -147,19 +169,23 @@
           }
         }
       },
-      "block_order": ["caption", "heading", "text", "button"],
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "image": "",
-        "_note_image": "NEEDS REAL IMAGE: Upload a warm brand photo in Theme Editor → Brand Story section",
         "height": "large",
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
+        "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-5",
         "color_scheme": "scheme-5",
-        "mobile_content_alignment": "left",
         "padding_top": 96,
         "padding_bottom": 96
       }
@@ -167,17 +193,37 @@
     "bundle": {
       "type": "fh-bundle-highlight",
       "blocks": {
-        "i1": { "type": "include", "settings": { "label": "Calming supplement (60 chews)" } },
-        "i2": { "type": "include", "settings": { "label": "Cozy bed throw" } },
-        "i3": { "type": "include", "settings": { "label": "Slow-focus chew" } }
+        "i1": {
+          "type": "include",
+          "settings": {
+            "label": "Calming supplement (60 chews)"
+          }
+        },
+        "i2": {
+          "type": "include",
+          "settings": {
+            "label": "Cozy bed throw"
+          }
+        },
+        "i3": {
+          "type": "include",
+          "settings": {
+            "label": "Slow-focus chew"
+          }
+        }
       },
-      "block_order": ["i1", "i2", "i3"],
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ],
       "settings": {
         "eyebrow": "BUNDLE",
         "heading": "The Calm Starter Pack",
-        "_note_product": "NEEDS PRODUCT ASSIGNMENT: Assign the bundle product (e.g. 'calm-starter-pack') here, and set its compare_at_price in Shopify Admin to enable the Save badge.",
         "description": "<p>A curated set for calmer days — supplement, cozy throw, and a chew designed for slow, settled focus. Save 15% versus buying separately.</p>",
+        "product": "calm-starter-pack",
         "button_label": "Add bundle to cart",
+        "button_link": "",
         "color_scheme": "scheme-3",
         "padding_top": 96,
         "padding_bottom": 96
@@ -208,7 +254,11 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
       "settings": {
         "eyebrow": "FROM THE PACK",
         "title": "What pet owners say",
@@ -238,7 +288,11 @@
           "settings": {}
         }
       },
-      "block_order": ["heading", "paragraph", "email_form"],
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
       "settings": {
         "color_scheme": "scheme-2",
         "full_width": true,
