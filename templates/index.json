@@ -44,6 +44,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/animals-pet-supplies-bold-1.jpg",
         "image_overlay_opacity": 0,
         "image_height": "large",
         "image_behavior": "ambient",
